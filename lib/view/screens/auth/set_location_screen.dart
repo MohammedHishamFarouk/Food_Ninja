@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_ninja/core/components/buttons/custom_back_button.dart';
 import 'package:food_ninja/core/constants/assets.dart';
 
-import '../../../core/components/background_angled_pattern.dart';
+import '../../../core/components/backgroundPattterns/background_angled_pattern.dart';
 import '../../../core/components/buttons/green_button_widget.dart';
 
 class SetLocationScreen extends StatelessWidget {

@@ -57,9 +57,9 @@ class ProductButton extends StatelessWidget {
         ),
         child: ColorFiltered(
           colorFilter: ColorFilter.mode(
-            buttonText.contains('process')
-                ? Colors.transparent
-                : Colors.grey.shade900,
+            buttonText.contains('Reorder')
+                ? Colors.grey.shade900
+                : Colors.transparent,
             BlendMode.saturation,
           ),
           child: Container(

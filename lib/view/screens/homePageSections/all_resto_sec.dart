@@ -9,7 +9,7 @@ class AllRestoSec extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Widget> restos =
-        context.read<ProductsCubit>().listTheRestaurants(6, context);
+        context.read<ProductsCubit>().getRestaurants(6, context);
     return ListView.builder(
       itemCount: 1,
       itemBuilder: (ctx, idx) {

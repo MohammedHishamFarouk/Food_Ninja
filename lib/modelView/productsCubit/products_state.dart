@@ -18,3 +18,5 @@ final class ProductsFailure extends ProductsState {
 final class RestaurantsSuccess extends ProductsState {}
 
 final class RestaurantsLoading extends ProductsState {}
+
+final class AddedToFavourites extends ProductsState {}

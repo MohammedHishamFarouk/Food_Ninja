@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_ninja/core/components/background_pattern.dart';
+import 'package:food_ninja/core/components/backgroundPattterns/background_pattern.dart';
 import 'package:food_ninja/view/screens/onboarding/onboarding_screen1.dart';
 
 class SplashScreen extends StatefulWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_ninja/modelView/resetCubit/reset_pass_cubit.dart';
+import 'package:food_ninja/modelView/resetPassCubit/reset_pass_cubit.dart';
 
 class CodeViaButton extends StatelessWidget {
   const CodeViaButton({

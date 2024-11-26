@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_ninja/core/components/background_pattern.dart';
+import 'package:food_ninja/core/components/backgroundPattterns/background_pattern.dart';
 import 'package:food_ninja/core/components/buttons/green_button_widget.dart';
 import 'package:food_ninja/core/constants/assets.dart';
 import 'package:food_ninja/core/style/color_manager.dart';

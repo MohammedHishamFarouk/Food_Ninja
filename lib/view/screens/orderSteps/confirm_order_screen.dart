@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_ninja/core/components/background_angled_pattern.dart';
+import 'package:food_ninja/core/components/backgroundPattterns/background_angled_pattern.dart';
 import 'package:food_ninja/core/components/buttons/custom_back_button.dart';
 import 'package:food_ninja/core/constants/assets.dart';
 import 'package:food_ninja/modelView/orderCubit/order_cubit.dart';

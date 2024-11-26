@@ -5,7 +5,7 @@ import 'package:food_ninja/core/style/theme_manager.dart';
 import 'package:food_ninja/modelView/chatCubit/chat_cubit.dart';
 import 'package:food_ninja/modelView/orderCubit/order_cubit.dart';
 import 'package:food_ninja/modelView/productsCubit/products_cubit.dart';
-import 'package:food_ninja/modelView/resetCubit/reset_pass_cubit.dart';
+import 'package:food_ninja/modelView/resetPassCubit/reset_pass_cubit.dart';
 import 'package:food_ninja/modelView/searchCubit/search_cubit.dart';
 import 'package:food_ninja/modelView/userCubit/user_cubit.dart';
 import 'package:food_ninja/view/screens/auth/fill_bio_screen.dart';
@@ -36,10 +36,7 @@ void main() {
       providers: [
         BlocProvider(create: (context) => UserCubit()),
         BlocProvider(create: (context) => SearchCubit()),
-        BlocProvider(
-            create: (context) => ProductsCubit(Dio())
-              ..getRestaurants()
-              ..getItemsList()),
+        BlocProvider(create: (context) => ProductsCubit(Dio())..getItemsList()),
         BlocProvider(create: (context) => ResetPassCubit()),
         BlocProvider(create: (context) => ChatCubit()),
         BlocProvider(create: (context) => OrderCubit()),

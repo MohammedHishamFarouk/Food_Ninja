@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_ninja/core/style/color_manager.dart';
-import 'package:food_ninja/modelView/searchCubit/search_cubit.dart';
 import 'package:food_ninja/view/screens/homePageSections/all_resto_sec.dart';
 import 'package:food_ninja/view/screens/homePageSections/popular_menu_sec.dart';
-import 'package:food_ninja/view/screens/homePageSections/your_order_sec.dart';
 
 import '../../../core/components/category_title_widget.dart';
 import '../../../core/constants/assets.dart';
@@ -19,7 +17,7 @@ class MainHomeSec extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.sizeOf(context).height;
     List<Widget> restaurants =
-        context.read<ProductsCubit>().listTheRestaurants(4, context);
+        context.read<ProductsCubit>().getRestaurants(4, context);
     return BlocConsumer<ProductsCubit, ProductsState>(
       listener: (context, state) {
         if (state is ProductsSuccess) {
@@ -94,13 +92,7 @@ class MainHomeSec extends StatelessWidget {
                                     SizedBox(
                                       height: 40,
                                       child: FilledButton(
-                                        onPressed: () {
-                                          context
-                                              .read<SearchCubit>()
-                                              .changeHomeSection(
-                                                const YourOrderSec(),
-                                              );
-                                        },
+                                        onPressed: () {},
                                         style: FilledButton.styleFrom(
                                           backgroundColor: Colors.white,
                                           shape: RoundedRectangleBorder(

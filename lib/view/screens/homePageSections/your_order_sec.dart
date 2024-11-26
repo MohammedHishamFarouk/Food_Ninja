@@ -22,8 +22,8 @@ class YourOrderSec extends StatelessWidget {
                 itemBuilder: (ctx, idx) {
                   return Column(
                     children: [
-                      ...context.read<OrderCubit>().listOfProcessBtn,
-                      ...context.read<OrderCubit>().processBtnHistory,
+                      ...context.read<OrderCubit>().processButtons,
+                      ...context.read<OrderCubit>().purchaseHistory,
                     ],
                   );
                 },

@@ -2,10 +2,10 @@ import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:food_ninja/core/components/productButton/product_button.dart';
+import 'package:food_ninja/core/constants/test_restaurants.dart';
 import 'package:food_ninja/model/local_Data.dart';
 import 'package:food_ninja/model/products_list_model.dart';
 import 'package:food_ninja/model/products_model.dart';
-import 'package:food_ninja/model/restaurant_model.dart';
 import 'package:food_ninja/view/screens/infoScreen/restaurant_screen.dart';
 
 import '../../core/components/buttons/custom_filled_button.dart';
@@ -18,52 +18,11 @@ class ProductsCubit extends Cubit<ProductsState> {
 
   final Dio dio;
 
-  List<RestaurantModel> restaurants = [];
   List<ProductsModel> products = [];
+  List<Widget> favourites = [];
+  List<int> favouritesId = [];
 
-  void getRestaurants() {
-    emit(RestaurantsLoading());
-    List<String> restaurantImages = [
-      AssetFolder.veganResto,
-      AssetFolder.healthyResto,
-      AssetFolder.faceResto,
-      AssetFolder.fourColorResto,
-      AssetFolder.hatResto,
-      AssetFolder.breadResto
-    ];
-
-    List<String> restaurantNames = [
-      'Vegan Resto',
-      'Healthy Food',
-      'Good Food',
-      'Smart Resto',
-      'Bread Resto',
-      'Hat Resto'
-    ];
-    List<String> restaurantTime = [
-      '12 Mins',
-      '8 Mins',
-      '20 Mins',
-      '1 Mins',
-      '5 Mins',
-      '40 Mins'
-    ];
-    List<int> restaurantDistance = [1, 5, 20, 1, 19, 40];
-
-    for (int i = 0; i < restaurantNames.length; i++) {
-      restaurants.add(
-        RestaurantModel(
-          restaurantName: restaurantNames[i],
-          restaurantImage: restaurantImages[i],
-          restaurantTime: restaurantTime[i],
-          restaurantDistance: restaurantDistance[i],
-        ),
-      );
-    }
-    emit(RestaurantsSuccess());
-  }
-
-  List<Widget> listTheRestaurants(int number, BuildContext context) {
+  List<Widget> getRestaurants(int number, BuildContext context) {
     List<Widget> restaurantsList = [];
     for (int i = 0; i < number; i++) {
       restaurantsList.add(
@@ -72,21 +31,21 @@ class ProductsCubit extends Cubit<ProductsState> {
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => RestaurantScreen(
-                  restaurantImage: restaurants[i].restaurantImage,
-                  restaurantName: restaurants[i].restaurantName,
+                  restaurantImage: TestRestaurants.restaurantImages[i],
+                  restaurantName: TestRestaurants.restaurantNames[i],
                   description: AssetFolder.trialDescription,
-                  distance: '${restaurants[i].restaurantDistance} Km',
+                  distance: '${TestRestaurants.restaurantDistance[i]} Km',
                 ),
               ),
             );
           },
-          image: restaurants[i].restaurantImage,
+          image: TestRestaurants.restaurantImages[i],
           width: 160,
           height: 200,
           imageHeight: 100,
-          text: restaurants[i].restaurantName,
-          hintText: restaurants[i].restaurantTime,
-          restaurantDistance: restaurants[i].restaurantDistance,
+          text: TestRestaurants.restaurantNames[i],
+          hintText: TestRestaurants.restaurantTime[i],
+          restaurantDistance: TestRestaurants.restaurantDistance[i],
         ),
       );
     }
@@ -125,5 +84,46 @@ class ProductsCubit extends Cubit<ProductsState> {
       );
     }
     return productsList;
+  }
+
+  void addToFavourites(
+    String foodImage,
+    String title,
+    String description,
+    price,
+    int id,
+  ) {
+    if (!favouritesId.contains(id)) {
+      favourites.add(
+        ProductButton(
+          image: foodImage,
+          productName: title,
+          hintText: description,
+          description: description,
+          price: price,
+          addButton: true,
+          countButtons: false,
+          buttonText: 'Buy Again',
+        ),
+      );
+      favouritesId.add(id);
+    } else {
+      favouritesId.remove(id);
+      favourites.remove(ProductButton(
+        image: foodImage,
+        productName: title,
+        hintText: description,
+        description: description,
+        price: price,
+        addButton: true,
+        countButtons: false,
+        buttonText: 'Buy Again',
+      ));
+    }
+    emit(AddedToFavourites());
+  }
+
+  bool isFavourite(int id) {
+    return favouritesId.contains(id);
   }
 }

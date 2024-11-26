@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_ninja/core/constants/assets.dart';
 import 'package:food_ninja/modelView/userCubit/user_cubit.dart';
 
-import '../../../core/components/background_angled_pattern.dart';
+import '../../../core/components/backgroundPattterns/background_angled_pattern.dart';
 import '../../../core/components/buttons/custom_back_button.dart';
 import '../../../core/components/buttons/custom_filled_button.dart';
 import '../../../core/components/buttons/custom_icon_button.dart';

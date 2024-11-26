@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_ninja/core/components/background_angled_pattern.dart';
+import 'package:food_ninja/core/components/backgroundPattterns/background_angled_pattern.dart';
 import 'package:food_ninja/core/components/buttons/custom_back_button.dart';
 import 'package:food_ninja/core/components/buttons/custom_filled_button.dart';
 import 'package:food_ninja/core/components/buttons/green_button_widget.dart';

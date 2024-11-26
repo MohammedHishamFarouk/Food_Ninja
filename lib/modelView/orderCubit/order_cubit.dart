@@ -11,19 +11,8 @@ class OrderCubit extends Cubit<OrderState> {
 
   final List<double> cartProductsPrices = [];
   final List<int> cartProductsId = [];
-  final List<Widget> listOfProcessBtn = [];
-  final List<Widget> processBtnHistory = [
-    const ProductButton(
-      image: AssetFolder.creamCake,
-      productName: 'soup',
-      hintText: 'asjkfasjfm',
-      price: 12,
-      description: 'mkasfnajkfnaf',
-      id: 100000,
-      addButton: true,
-      countButtons: false,
-      buttonText: 'Reorder',
-    ),
+  final List<Widget> processButtons = [];
+  final List<Widget> purchaseHistory = [
     const ProductButton(
       image: AssetFolder.soup,
       productName: 'soup',
@@ -37,7 +26,7 @@ class OrderCubit extends Cubit<OrderState> {
     ),
     const ProductButton(
       image: AssetFolder.mozarella,
-      productName: 'soup',
+      productName: 'mozarella',
       hintText: 'asjkfasjfm',
       price: 30,
       description: 'mkasfnajkfnaf',
@@ -63,7 +52,7 @@ class OrderCubit extends Cubit<OrderState> {
 
   void addToCart(ProductsModel productsModel) {
     if (!cartProductsId.contains(productsModel.id)) {
-      listOfProcessBtn.add(
+      processButtons.add(
         ProductButton(
           image: productsModel.foodImage.first,
           productName: productsModel.title,

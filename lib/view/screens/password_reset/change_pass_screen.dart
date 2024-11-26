@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_ninja/core/components/custom_textfield_widget.dart';
-import 'package:food_ninja/modelView/resetCubit/reset_pass_cubit.dart';
+import 'package:food_ninja/modelView/resetPassCubit/reset_pass_cubit.dart';
 
-import '../../../core/components/background_angled_pattern.dart';
+import '../../../core/components/backgroundPattterns/background_angled_pattern.dart';
 import '../../../core/components/buttons/custom_back_button.dart';
 import '../../../core/components/buttons/green_button_widget.dart';
 

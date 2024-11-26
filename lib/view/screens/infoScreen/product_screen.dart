@@ -6,6 +6,7 @@ import 'package:food_ninja/core/components/category_title_widget.dart';
 import 'package:food_ninja/core/style/color_manager.dart';
 import 'package:food_ninja/model/products_model.dart';
 import 'package:food_ninja/modelView/orderCubit/order_cubit.dart';
+import 'package:food_ninja/modelView/productsCubit/products_cubit.dart';
 import 'package:food_ninja/view/screens/infoScreen/components/product_badge.dart';
 import 'package:food_ninja/view/screens/infoScreen/components/review_box_widget.dart';
 
@@ -89,11 +90,27 @@ class ProductScreen extends StatelessWidget {
                               iconColor: ColorManager.blendedGreen,
                               onPressed: () {},
                             ),
-                            CustomIconButton(
-                              icon: Icons.favorite_outline,
-                              backgroundColor: Colors.red,
-                              iconColor: Colors.red,
-                              onPressed: () {},
+                            BlocBuilder<ProductsCubit, ProductsState>(
+                              builder: (context, state) {
+                                return CustomIconButton(
+                                  icon: context
+                                          .read<ProductsCubit>()
+                                          .isFavourite(id!)
+                                      ? Icons.favorite
+                                      : Icons.favorite_outline,
+                                  backgroundColor: Colors.red,
+                                  iconColor: Colors.red,
+                                  onPressed: () => context
+                                      .read<ProductsCubit>()
+                                      .addToFavourites(
+                                        foodImage,
+                                        foodName,
+                                        description,
+                                        price,
+                                        id!,
+                                      ),
+                                );
+                              },
                             ),
                           ],
                         ),

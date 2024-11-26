@@ -11,13 +11,15 @@ class AssetFolder {
 
   static const String locationImage = 'assets/sign_up/Pin Logo.png';
 
-  static const String searchIcon = 'assets/icons/Icon Search.png';
+  static const String searchIcon = 'assets/icons/search.png';
 
-  static const String notificationIcon = 'assets/icons/Icon Notification.png';
+  static const String notificationIcon = 'assets/icons/notification.png';
 
   static const String filterIcon = 'assets/icons/Filter.png';
 
   static const String backArrowIcon = 'assets/icons/back_arrow.png';
+
+  static const String voucherIcon = 'assets/icons/voucher.png';
 
   static const String camera = 'assets/sign_up/camera.png';
 
@@ -31,19 +33,19 @@ class AssetFolder {
 
   static const String homeIcon = 'assets/icons/Home.png';
 
-  static const String editIcon = 'assets/icons/Edit Icon.png';
+  static const String editIcon = 'assets/icons/Edit.png';
 
-  static const String sendIcon = 'assets/icons/send_icon.png';
+  static const String sendIcon = 'assets/icons/send.png';
 
   static const String mapPinFilledIcon = 'assets/icons/map-pin-filled.png';
 
   static const String mapPinOutLinedIcon = 'assets/icons/map-pin_outlined.png';
 
-  static const String speakerIcon = 'assets/icons/speaker_icon.png';
+  static const String speakerIcon = 'assets/icons/speaker.png';
 
-  static const String muteSpeakerIcon = 'assets/icons/mute_speaker_icon.png';
+  static const String muteSpeakerIcon = 'assets/icons/mute_speaker.png';
 
-  static const String cancel = 'assets/icons/cancel_iocn.png';
+  static const String cancel = 'assets/icons/cancel.png';
 
   static const String iceCreamImage = 'assets/products/ice_cream_new.png';
 
@@ -107,4 +109,6 @@ Nulla occaecat velit laborum exercitation ullamco. Elit labore eu aute elit nost
   static const payoneer = 'assets/sign_up/Payoneer_logo 1.png';
 
   static const visa = 'assets/sign_up/visa (1) 1.png';
+
+  static const empty = 'assets/emptyImage.png';
 }

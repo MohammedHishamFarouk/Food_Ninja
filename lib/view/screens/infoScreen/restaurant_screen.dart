@@ -27,7 +27,7 @@ class RestaurantScreen extends StatelessWidget {
     final double screenHeight = MediaQuery.sizeOf(context).height;
     final double screenWidth = MediaQuery.sizeOf(context).width;
     List<Widget> restaurants =
-        context.read<ProductsCubit>().listTheRestaurants(4, context);
+        context.read<ProductsCubit>().getRestaurants(4, context);
     return Scaffold(
       body: Stack(
         alignment: Alignment.topCenter,

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_ninja/core/style/color_manager.dart';
 import 'package:food_ninja/modelView/chatCubit/chat_cubit.dart';
 
-import '../../../core/components/background_pattern.dart';
+import '../../../core/components/backgroundPattterns/background_pattern.dart';
 import '../../../core/constants/assets.dart';
 
 class CallScreen extends StatelessWidget {
