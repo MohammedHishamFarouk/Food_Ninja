@@ -9,24 +9,26 @@ class PopularMenuSec extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> products = context.read<ProductsCubit>().listTheProducts(8);
-    return ListView.builder(
-      itemCount: 1,
-      itemBuilder: (ctx, idx) {
-        return Column(
-          children: [
-            const CategoryTitleWidget(
-              title: 'Popular Menu',
-              addTextButton: true,
-              textButtonText: 'View Less',
-            ),
-            ...products,
-            const SizedBox(
-              height: 90,
-            )
-          ],
-        );
-      },
+    List<Widget> products = context.read<ProductsCubit>().listTheProducts(10);
+    return Column(
+      children: [
+        const CategoryTitleWidget(
+          title: 'Popular Menu',
+          addTextButton: true,
+          textButtonText: 'View Less',
+        ),
+        Expanded(
+          child: ListView.builder(
+            itemCount: 10,
+            itemBuilder: (ctx, idx) {
+              return products[idx];
+            },
+          ),
+        ),
+        const SizedBox(
+          height: 90,
+        )
+      ],
     );
   }
 }

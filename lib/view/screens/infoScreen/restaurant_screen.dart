@@ -4,18 +4,20 @@ import 'package:food_ninja/core/components/buttons/custom_icon_button.dart';
 import 'package:food_ninja/core/components/category_title_widget.dart';
 import 'package:food_ninja/core/style/color_manager.dart';
 import 'package:food_ninja/modelView/productsCubit/products_cubit.dart';
+import 'package:food_ninja/view/screens/infoScreen/components/info_tab.dart';
 import 'package:food_ninja/view/screens/infoScreen/components/product_badge.dart';
 import 'package:food_ninja/view/screens/infoScreen/components/review_box_widget.dart';
 
 import '../../../core/constants/assets.dart';
 
 class RestaurantScreen extends StatelessWidget {
-  const RestaurantScreen(
-      {super.key,
-      required this.restaurantImage,
-      required this.restaurantName,
-      required this.description,
-      required this.distance});
+  const RestaurantScreen({
+    super.key,
+    required this.restaurantImage,
+    required this.restaurantName,
+    required this.description,
+    required this.distance,
+  });
 
   final String restaurantImage;
   final String restaurantName;
@@ -40,136 +42,105 @@ class RestaurantScreen extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.only(top: screenHeight / 2.3),
-              child: Container(
-                width: screenWidth,
-                decoration: const BoxDecoration(
-                  color: ColorManager.blackShade,
-                  borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(40),
-                  ),
+          InfoTab(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 30.0),
+                child: Row(
+                  children: [
+                    ProductBadge(
+                      text: 'Popular',
+                      textColor: ColorManager.blendedGreen,
+                      backgroundColor: ColorManager.blendedGreen,
+                    ),
+                    const Spacer(),
+                    CustomIconButton(
+                      icon: Icons.location_on_rounded,
+                      backgroundColor: ColorManager.blendedGreen,
+                      iconColor: ColorManager.blendedGreen,
+                      onPressed: () {},
+                    ),
+                    CustomIconButton(
+                      icon: Icons.favorite_outline,
+                      backgroundColor: Colors.red,
+                      iconColor: Colors.red,
+                      onPressed: () {},
+                    ),
+                  ],
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 24.0, vertical: 16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Center(
-                        child: SizedBox(
-                          width: screenWidth / 7,
-                          child: ClipOval(
-                            child: Divider(
-                              color: Colors.grey[800],
-                              thickness: 6,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 30.0),
-                        child: Row(
-                          children: [
-                            ProductBadge(
-                              text: 'Popular',
-                              textColor: ColorManager.blendedGreen,
-                              backgroundColor: ColorManager.blendedGreen,
-                            ),
-                            const Spacer(),
-                            CustomIconButton(
-                              icon: Icons.location_on_rounded,
-                              backgroundColor: ColorManager.blendedGreen,
-                              iconColor: ColorManager.blendedGreen,
-                              onPressed: () {},
-                            ),
-                            CustomIconButton(
-                              icon: Icons.favorite_outline,
-                              backgroundColor: Colors.red,
-                              iconColor: Colors.red,
-                              onPressed: () {},
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10.0),
-                        child: Text(
-                          restaurantName,
-                          style: const TextStyle(
-                            fontSize: 31,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.location_on_outlined,
-                            color: ColorManager.blendedGreen,
-                            size: 24,
-                          ),
-                          Text(
-                            distance,
-                            style: TextStyle(color: Colors.grey.shade700),
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Icon(
-                            Icons.star_half_rounded,
-                            color: ColorManager.blendedGreen,
-                            size: 27,
-                          ),
-                          Text(
-                            ' 4,8 Rating',
-                            style: TextStyle(color: Colors.grey.shade700),
-                          ),
-                        ],
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10.0),
-                        child: Text(
-                          description,
-                          style:
-                              const TextStyle(fontSize: 15, color: Colors.grey),
-                        ),
-                      ),
-                      const CategoryTitleWidget(
-                        title: 'Popular Menu',
-                        addTextButton: true,
-                      ),
-                      SizedBox(
-                        height: 200,
-                        child: ListView.separated(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: restaurants.length,
-                          itemBuilder: (context, index) {
-                            return restaurants[index];
-                          },
-                          separatorBuilder: (BuildContext context, int index) =>
-                              const SizedBox(
-                            width: 16,
-                          ),
-                        ),
-                      ),
-                      const CategoryTitleWidget(title: 'Testimonials'),
-                      const ReviewBoxWidget(
-                        image: AssetFolder.happyMan,
-                        userName: 'happy guy',
-                        hintText: '20 April 2021',
-                      ),
-                      const ReviewBoxWidget(
-                        image: AssetFolder.man,
-                        userName: 'orange man',
-                        hintText: '20 April 2021',
-                      ),
-                    ],
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                child: Text(
+                  restaurantName,
+                  style: const TextStyle(
+                    fontSize: 31,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-            ),
+              Row(
+                children: [
+                  Icon(
+                    Icons.location_on_outlined,
+                    color: ColorManager.blendedGreen,
+                    size: 24,
+                  ),
+                  Text(
+                    distance,
+                    style: TextStyle(color: Colors.grey.shade700),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Icon(
+                    Icons.star_half_rounded,
+                    color: ColorManager.blendedGreen,
+                    size: 27,
+                  ),
+                  Text(
+                    ' 4,8 Rating',
+                    style: TextStyle(color: Colors.grey.shade700),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                child: Text(
+                  description,
+                  style: const TextStyle(fontSize: 15, color: Colors.grey),
+                ),
+              ),
+              const CategoryTitleWidget(
+                title: 'Popular Menu',
+                addTextButton: true,
+              ),
+              SizedBox(
+                height: 200,
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: restaurants.length,
+                  itemBuilder: (context, index) {
+                    return restaurants[index];
+                  },
+                  separatorBuilder: (BuildContext context, int index) =>
+                      const SizedBox(
+                    width: 16,
+                  ),
+                ),
+              ),
+              const CategoryTitleWidget(title: 'Testimonials'),
+              const ReviewBoxWidget(
+                image: AssetFolder.happyMan,
+                userName: 'happy guy',
+                hintText: '20 April 2021',
+              ),
+              const ReviewBoxWidget(
+                image: AssetFolder.man,
+                userName: 'orange man',
+                hintText: '20 April 2021',
+              ),
+            ],
           ),
         ],
       ),

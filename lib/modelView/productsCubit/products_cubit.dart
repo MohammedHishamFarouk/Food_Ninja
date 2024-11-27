@@ -86,39 +86,13 @@ class ProductsCubit extends Cubit<ProductsState> {
     return productsList;
   }
 
-  void addToFavourites(
-    String foodImage,
-    String title,
-    String description,
-    price,
-    int id,
-  ) {
+  void addToFavourites(ProductButton product, int id) {
     if (!favouritesId.contains(id)) {
-      favourites.add(
-        ProductButton(
-          image: foodImage,
-          productName: title,
-          hintText: description,
-          description: description,
-          price: price,
-          addButton: true,
-          countButtons: false,
-          buttonText: 'Buy Again',
-        ),
-      );
+      favourites.add(product);
       favouritesId.add(id);
     } else {
       favouritesId.remove(id);
-      favourites.remove(ProductButton(
-        image: foodImage,
-        productName: title,
-        hintText: description,
-        description: description,
-        price: price,
-        addButton: true,
-        countButtons: false,
-        buttonText: 'Buy Again',
-      ));
+      favourites.remove(product);
     }
     emit(AddedToFavourites());
   }

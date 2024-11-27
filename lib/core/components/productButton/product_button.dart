@@ -3,7 +3,7 @@ import 'package:food_ninja/core/components/buttons/green_button_widget.dart';
 import 'package:food_ninja/core/components/productButton/components/inc_dec_btn_widget.dart';
 import 'package:food_ninja/core/components/productButton/components/product_image_widget.dart';
 import 'package:food_ninja/core/style/color_manager.dart';
-import 'package:food_ninja/view/screens/infoScreen/product_screen.dart';
+import 'package:food_ninja/view/screens/infoScreen/productScreen/product_screen.dart';
 
 class ProductButton extends StatelessWidget {
   const ProductButton({
@@ -24,6 +24,15 @@ class ProductButton extends StatelessWidget {
   final String productName, hintText, description, buttonText;
   final double price;
   final int? id;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other is ProductButton && id == other.id && price == other.price);
+  }
+
+  @override
+  int get hashcode => id.hashCode;
 
   @override
   Widget build(BuildContext context) {
