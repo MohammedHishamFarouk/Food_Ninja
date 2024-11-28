@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_ninja/core/components/backgroundPattterns/background_pattern.dart';
 import 'package:food_ninja/core/components/buttons/green_button_widget.dart';
 import 'package:food_ninja/core/components/custom_textfield_widget.dart';
+import 'package:food_ninja/core/components/password_textfield_widget.dart';
 import 'package:food_ninja/core/style/color_manager.dart';
 import 'package:food_ninja/view/screens/auth/loginScreen/sign_options_button.dart';
 
@@ -61,12 +62,10 @@ class LoginScreen extends StatelessWidget {
                       controller: context.read<UserCubit>().signInEmail,
                     ),
                     const SizedBox(height: 12),
-                    CustomTextFieldWidget(
+                    PassTextFieldWidget(
                       hintText: 'Password',
                       formKey: context.read<UserCubit>().signInPasswordKey,
                       controller: context.read<UserCubit>().signInPassword,
-                      addSuffixIcon: true,
-                      suffixIcon: const Icon(Icons.remove_red_eye_rounded),
                     ),
                     const SizedBox(
                       height: 20,
@@ -121,6 +120,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
+                      context.read<UserCubit>().clearFields();
                       Navigator.of(context).pushReplacementNamed('signUp');
                     },
                     child: const Text('Sign up'),

@@ -16,24 +16,28 @@ class ResetPassCubit extends Cubit<ResetPassState> {
   final TextEditingController confirmPassController = TextEditingController();
   final GlobalKey<FormState> confirmPassKey = GlobalKey();
 
-  String selectSendWay = '';
+  String selectSmsWay = '';
 
-  void sendCodeVia(String selectSendWay){
-    this.selectSendWay = selectSendWay;
+  void sendCodeVia(String selectSendWay) {
+    selectSmsWay = selectSendWay;
     emit(ResetPassLoadingState());
   }
 
-  void checkChoice(BuildContext context){
-    if(selectSendWay == ''){
-      emit(ResetPassFailureState());
-    }else{
+  void checkChoice(BuildContext context) {
+    if (selectSmsWay == '') {
+      emit(ChoiceFailureState());
+    } else {
       Navigator.of(context).pushNamed('VerifyCode');
+      emit(ResetPassLoadingState());
     }
   }
 
-  void checkCode(BuildContext context){
-    if(controller1.text+controller2.text+
-        controller3.text+controller4.text == '1234'){
+  void checkCode(BuildContext context) {
+    if (controller1.text +
+            controller2.text +
+            controller3.text +
+            controller4.text ==
+        '1234') {
       controller1.clear();
       controller2.clear();
       controller3.clear();
@@ -42,15 +46,18 @@ class ResetPassCubit extends Cubit<ResetPassState> {
     }
   }
 
-  void checkNewPass(BuildContext context){
-    if(newPassController.text == confirmPassController.text &&
+  void checkNewPass(BuildContext context) {
+    if (newPassController.text == confirmPassController.text &&
         newPassController.text.isNotEmpty &&
-        newPassController.text.length >= 8
-    ){
+        newPassController.text.length >= 8) {
       Navigator.of(context).pushReplacementNamed('resetSuccessful');
-    }else{
+    } else {
       emit(ResetPassFailureState());
     }
   }
 
+  void clearField() {
+    newPassController.clear();
+    confirmPassController.clear();
+  }
 }

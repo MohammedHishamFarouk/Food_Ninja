@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_ninja/core/components/custom_textfield_widget.dart';
+import 'package:food_ninja/core/components/password_textfield_widget.dart';
 import 'package:food_ninja/modelView/resetPassCubit/reset_pass_cubit.dart';
 
 import '../../../core/components/backgroundPattterns/background_angled_pattern.dart';
@@ -69,14 +69,14 @@ class ChangePassScreen extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 20.0),
-                    child: CustomTextFieldWidget(
+                    child: PassTextFieldWidget(
                       hintText: 'New Password',
                       formKey: context.read<ResetPassCubit>().newPassKey,
                       controller:
                           context.read<ResetPassCubit>().newPassController,
                     ),
                   ),
-                  CustomTextFieldWidget(
+                  PassTextFieldWidget(
                     hintText: 'Confirm Password',
                     formKey: context.read<ResetPassCubit>().confirmPassKey,
                     controller:
@@ -87,13 +87,14 @@ class ChangePassScreen extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.only(bottom: 100.0),
                       child: GreenButtonWidget(
-                        text: 'Next',
-                        height: 60,
-                        width: 160,
-                        onTap: () => context
-                            .read<ResetPassCubit>()
-                            .checkNewPass(context),
-                      ),
+                          text: 'Next',
+                          height: 60,
+                          width: 160,
+                          onTap: () {
+                            context
+                                .read<ResetPassCubit>()
+                                .checkNewPass(context);
+                          }),
                     ),
                   ),
                 ],

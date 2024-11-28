@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_ninja/core/components/backgroundPattterns/background_pattern.dart';
 import 'package:food_ninja/core/components/buttons/green_button_widget.dart';
 import 'package:food_ninja/core/components/custom_textfield_widget.dart';
+import 'package:food_ninja/core/components/password_textfield_widget.dart';
 import 'package:food_ninja/core/constants/assets.dart';
 import 'package:food_ninja/core/style/color_manager.dart';
 import 'package:food_ninja/modelView/userCubit/user_cubit.dart';
@@ -77,18 +78,19 @@ class SignupScreen extends StatelessWidget {
                           controller: context.read<UserCubit>().signUpAnamwp,
                           addPrefix: true,
                         ),
-                        const SizedBox(height: 12),
-                        CustomTextFieldWidget(
-                          hintText: 'Email',
-                          prefixImage: 'assets/sign_up/Message.png',
-                          formKey: context.read<UserCubit>().signUpEmailKey,
-                          controller: context.read<UserCubit>().signUpEmail,
-                          addPrefix: true,
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 12.0),
+                          child: CustomTextFieldWidget(
+                            hintText: 'Email',
+                            prefixImage: 'assets/sign_up/Message.png',
+                            formKey: context.read<UserCubit>().signUpEmailKey,
+                            controller: context.read<UserCubit>().signUpEmail,
+                            addPrefix: true,
+                          ),
                         ),
-                        const SizedBox(height: 12),
-                        CustomTextFieldWidget(
+                        PassTextFieldWidget(
                           hintText: 'Password',
-                          prefixImage: 'assets/sign_up/Lock.png',
+                          prefixImage: AssetFolder.lockIcon,
                           formKey: context.read<UserCubit>().signUpPasswordKey,
                           controller: context.read<UserCubit>().signUpPassword,
                           addPrefix: true,
@@ -135,6 +137,7 @@ class SignupScreen extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
+                      context.read<UserCubit>().clearFields();
                       Navigator.of(context).pushReplacementNamed('login');
                     },
                     child: const Text(

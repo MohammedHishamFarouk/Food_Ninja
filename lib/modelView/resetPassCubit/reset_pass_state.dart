@@ -10,3 +10,5 @@ final class ResetPassLoadingState extends ResetPassState {}
 final class ResetPassSuccessState extends ResetPassState {}
 
 final class ResetPassFailureState extends ResetPassState {}
+
+final class ChoiceFailureState extends ResetPassState {}

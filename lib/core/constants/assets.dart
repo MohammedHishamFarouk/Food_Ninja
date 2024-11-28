@@ -37,6 +37,8 @@ class AssetFolder {
 
   static const String sendIcon = 'assets/icons/send.png';
 
+  static const String lockIcon = 'assets/icons/Lock.png';
+
   static const String mapPinFilledIcon = 'assets/icons/map-pin-filled.png';
 
   static const String mapPinOutLinedIcon = 'assets/icons/map-pin_outlined.png';

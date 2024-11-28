@@ -25,11 +25,11 @@ class CodeViaButton extends StatelessWidget {
           style: FilledButton.styleFrom(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
-              side: state is ResetPassFailureState
+              side: state is ChoiceFailureState
                   ? const BorderSide(color: Colors.red)
                   : BorderSide(
                       color:
-                          context.read<ResetPassCubit>().selectSendWay == title
+                          context.read<ResetPassCubit>().selectSmsWay == title
                               ? Colors.green
                               : Colors.transparent,
                     ),

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_ninja/core/components/backgroundPattterns/background_pattern.dart';
 import 'package:food_ninja/core/components/buttons/green_button_widget.dart';
 import 'package:food_ninja/core/constants/assets.dart';
 import 'package:food_ninja/core/style/color_manager.dart';
+import 'package:food_ninja/modelView/resetPassCubit/reset_pass_cubit.dart';
 
 class ResetSuccessScreen extends StatelessWidget {
   const ResetSuccessScreen({super.key});
@@ -40,12 +42,13 @@ class ResetSuccessScreen extends StatelessWidget {
                   flex: 3,
                 ),
                 GreenButtonWidget(
-                  text: 'Back',
-                  height: 60,
-                  width: 160,
-                  onTap: () =>
-                      Navigator.of(context).pushReplacementNamed('login'),
-                ),
+                    text: 'Back',
+                    height: 60,
+                    width: 160,
+                    onTap: () {
+                      Navigator.of(context).pushReplacementNamed('login');
+                      context.read<ResetPassCubit>().clearField();
+                    }),
                 const Spacer(),
               ],
             ),

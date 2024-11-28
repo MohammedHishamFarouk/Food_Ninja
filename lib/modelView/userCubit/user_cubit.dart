@@ -41,42 +41,50 @@ class UserCubit extends Cubit<UserState> {
 
   XFile? profileImage;
 
-
   bool keepMeSigned = false;
   bool emailSpecialPricing = false;
 
-  void signUp(){
+  void signUp() {
     emit(SignUpLoading());
-    if(signUpAnamwp.text.isEmpty || signUpEmail.text.isEmpty || signUpPassword.text.isEmpty){
+    if (signUpAnamwp.text.isEmpty ||
+        signUpEmail.text.isEmpty ||
+        signUpPassword.text.isEmpty) {
       emit(SignUpFailure(message: 'Please Fill in the required Fields'));
       return;
     }
     emit(SignUpSuccess());
   }
 
-  void keepMeSignedPressed(){
+  void keepMeSignedPressed() {
     keepMeSigned = !keepMeSigned;
     emit(IconButtonPressed());
   }
 
-  void emailSpecialPricingPressed(){
+  void emailSpecialPricingPressed() {
     emailSpecialPricing = !emailSpecialPricing;
     emit(IconButtonPressed());
   }
 
-  Future pickImageFromGallery()async{
-   profileImage = await ImagePicker().pickImage(source: ImageSource.gallery);
-   emit(ChangeProfileImage());
+  void clearFields() {
+    signUpPassword.clear();
+    signUpEmail.clear();
+    signUpAnamwp.clear();
+    signInEmail.clear();
+    signInPassword.clear();
   }
 
-  Future pickImageFromCamera()async{
+  Future pickImageFromGallery() async {
+    profileImage = await ImagePicker().pickImage(source: ImageSource.gallery);
+    emit(ChangeProfileImage());
+  }
+
+  Future pickImageFromCamera() async {
     profileImage = await ImagePicker().pickImage(source: ImageSource.camera);
     emit(ChangeProfileImage());
   }
 
-  void cancelImage(){
+  void cancelImage() {
     profileImage = null;
     emit(ChangeProfileImage());
   }
-
 }
