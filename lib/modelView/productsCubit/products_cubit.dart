@@ -74,7 +74,8 @@ class ProductsCubit extends Cubit<ProductsState> {
     for (int i = 0; i < number; i++) {
       productsList.add(
         ProductButton(
-          image: LocalData.productsList[i].foodImage[0],
+          image: LocalData.productsList[i].foodImage[0]
+              .replaceAll(RegExp(r'[^a-zA-Z0-9:/._-]'), ''),
           productName: LocalData.productsList[i].title,
           hintText: LocalData.productsList[i].description,
           price: LocalData.productsList[i].price,
