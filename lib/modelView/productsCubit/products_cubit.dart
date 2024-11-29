@@ -3,7 +3,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:food_ninja/core/components/productButton/product_button.dart';
 import 'package:food_ninja/core/constants/test_restaurants.dart';
-import 'package:food_ninja/model/local_Data.dart';
 import 'package:food_ninja/model/products_list_model.dart';
 import 'package:food_ninja/model/products_model.dart';
 import 'package:food_ninja/view/screens/infoScreen/restaurant_screen.dart';
@@ -59,10 +58,9 @@ class ProductsCubit extends Cubit<ProductsState> {
         'https://api.escuelajs.co/api/v1/products',
       );
       final getProductsModel = ProductsListModel.fromJson(response.data);
-      final List<ProductsModel> products = getProductsModel.productsList
+      products = getProductsModel.productsList
           .map((e) => ProductsModel.fromJson(e))
           .toList();
-      LocalData.productsList = products;
       emit(ProductsSuccess());
     } catch (e) {
       emit(ProductsFailure(message: e.toString()));
@@ -74,13 +72,14 @@ class ProductsCubit extends Cubit<ProductsState> {
     for (int i = 0; i < number; i++) {
       productsList.add(
         ProductButton(
-          image: LocalData.productsList[i].foodImage[0]
+          image: products[i]
+              .foodImage[0]
               .replaceAll(RegExp(r'[^a-zA-Z0-9:/._-]'), ''),
-          productName: LocalData.productsList[i].title,
-          hintText: LocalData.productsList[i].description,
-          price: LocalData.productsList[i].price,
-          description: LocalData.productsList[i].description,
-          id: LocalData.productsList[i].id,
+          productName: products[i].title,
+          hintText: products[i].description,
+          price: products[i].price,
+          description: products[i].description,
+          id: products[i].id,
         ),
       );
     }
