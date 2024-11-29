@@ -12,6 +12,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.sizeOf(context).width;
     return Scaffold(
       body: Stack(
         children: [
@@ -21,13 +22,13 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(height: 30),
-                const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 30.0),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 30.0),
                   child: Row(
                     children: [
-                      SizedBox(
-                        width: 210,
-                        child: Text(
+                      Flexible(
+                        flex: screenWidth <= 344 ? 9 : 5,
+                        child: const Text(
                           'Find Your Favourite Food',
                           style: TextStyle(
                             fontSize: 31,
@@ -35,11 +36,8 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Spacer(),
-                      Padding(
-                        padding: EdgeInsets.only(right: 10.0),
-                        child: NotificationButton(),
-                      ),
+                      const Spacer(),
+                      const NotificationButton(),
                     ],
                   ),
                 ),
