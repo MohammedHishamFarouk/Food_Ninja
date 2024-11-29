@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_ninja/core/style/color_manager.dart';
 import 'package:food_ninja/modelView/searchCubit/search_cubit.dart';
 import 'package:food_ninja/view/screens/chat/chat_screen.dart';
-import 'package:food_ninja/view/screens/homePageSections/filterScreen/filter_screen.dart';
 import 'package:food_ninja/view/screens/homePageSections/home_screen.dart';
 import 'package:food_ninja/view/screens/infoScreen/profile_screen.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -32,7 +31,7 @@ class _NavigationBarScreenState extends State<NavigationBarScreen> {
     return BlocBuilder<SearchCubit, SearchState>(
       builder: (context, state) {
         return state is FilterLoadingState
-            ? const FilterScreen()
+            ? const HomeScreen()
             : Scaffold(
                 body: Stack(
                   children: [

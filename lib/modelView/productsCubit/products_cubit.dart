@@ -30,7 +30,7 @@ class ProductsCubit extends Cubit<ProductsState> {
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => RestaurantScreen(
-                  restaurantImage: TestRestaurants.restaurantImages[i],
+                  restaurantImage: TestRestaurants.restosInterior[i],
                   restaurantName: TestRestaurants.restaurantNames[i],
                   description: AssetFolder.trialDescription,
                   distance: '${TestRestaurants.restaurantDistance[i]} Km',

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:food_ninja/core/components/backgroundPattterns/background_angled_pattern.dart';
-import 'package:food_ninja/core/components/buttons/custom_back_button.dart';
 import 'package:food_ninja/core/constants/assets.dart';
 import 'package:food_ninja/view/screens/chat/component/contact_button.dart';
 
@@ -23,7 +22,6 @@ class ChatScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      CustomBackButton(),
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 20.0),
                         child: Text(

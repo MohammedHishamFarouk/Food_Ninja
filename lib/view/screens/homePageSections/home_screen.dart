@@ -45,21 +45,33 @@ class HomeScreen extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 20.0),
                   child: Row(
                     children: [
-                      SizedBox(
-                        height: 60,
-                        width: MediaQuery.sizeOf(context).width - 120,
-                        //ToDo color switch
-                        child: CustomTextFieldWidget(
-                          hintText: ' What do you want to order?',
-                          formKey: context.read<SearchCubit>().searchKey,
-                          controller: context.read<SearchCubit>().search,
-                          prefixImage: AssetFolder.searchIcon,
-                          addPrefix: true,
-                          imageScale: 0.9,
-                        ),
+                      BlocBuilder<SearchCubit, SearchState>(
+                        builder: (context, state) {
+                          return SizedBox(
+                            height: 60,
+                            width: state is FilterLoadingState
+                                ? screenWidth - 50
+                                : screenWidth - 120,
+                            //ToDo color switch
+                            child: CustomTextFieldWidget(
+                              hintText: ' What do you want to order?',
+                              formKey: context.read<SearchCubit>().searchKey,
+                              controller: context.read<SearchCubit>().search,
+                              prefixImage: AssetFolder.searchIcon,
+                              addPrefix: true,
+                              imageScale: 0.9,
+                            ),
+                          );
+                        },
                       ),
                       const Spacer(),
-                      const FilterButton(),
+                      BlocBuilder<SearchCubit, SearchState>(
+                        builder: (context, state) {
+                          return state is FilterLoadingState
+                              ? const SizedBox()
+                              : const FilterButton();
+                        },
+                      ),
                     ],
                   ),
                 ),

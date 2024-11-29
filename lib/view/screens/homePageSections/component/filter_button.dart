@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_ninja/modelView/searchCubit/search_cubit.dart';
+import 'package:food_ninja/view/screens/homePageSections/filterScreen/filter_screen.dart';
 
 import '../../../../core/constants/assets.dart';
 
@@ -14,7 +15,10 @@ class FilterButton extends StatelessWidget {
       height: 60,
       width: 60,
       child: FilledButton(
-          onPressed: () => context.read<SearchCubit>().filterButtonPressed(),
+          onPressed: () {
+            context.read<SearchCubit>().changeHomeSection(const FilterScreen());
+            context.read<SearchCubit>().filterButtonPressed();
+          },
           style: FilledButton.styleFrom(
             padding: EdgeInsets.zero,
             backgroundColor: Colors.grey[900],

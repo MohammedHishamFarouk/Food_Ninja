@@ -19,6 +19,15 @@ class TestRestaurants {
     'Hat Resto'
   ];
 
+  static const List<String> restosInterior = [
+    'assets/restaurants/resto1.jpg',
+    'assets/restaurants/resto2.jpg',
+    'assets/restaurants/resto3.jpg',
+    'assets/restaurants/resto4.png',
+    'assets/restaurants/resto5.jpg',
+    'assets/restaurants/resto6.jpg'
+  ];
+
   static const List<String> restaurantTime = [
     '12 Mins',
     '8 Mins',
