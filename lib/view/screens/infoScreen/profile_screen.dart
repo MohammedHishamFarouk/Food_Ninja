@@ -56,7 +56,7 @@ class ProfileScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text(
-                      'Mohamed Hisham',
+                      'mohamed hisham',
                       style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,

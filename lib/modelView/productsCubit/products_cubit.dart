@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:food_ninja/core/api/api_consumer.dart';
 import 'package:food_ninja/core/components/productButton/product_button.dart';
 import 'package:food_ninja/core/constants/test_restaurants.dart';
 import 'package:food_ninja/model/products_list_model.dart';
@@ -13,9 +13,9 @@ import '../../core/constants/assets.dart';
 part 'products_state.dart';
 
 class ProductsCubit extends Cubit<ProductsState> {
-  ProductsCubit(this.dio) : super(ProductsInitial());
+  ProductsCubit(this.api) : super(ProductsInitial());
 
-  final Dio dio;
+  final ApiConsumer api;
 
   List<ProductsModel> products = [];
   List<Widget> favourites = [];
@@ -54,10 +54,10 @@ class ProductsCubit extends Cubit<ProductsState> {
   Future getItemsList() async {
     emit(ProductsLoading());
     try {
-      final response = await dio.get(
+      final response = await api.get(
         'https://api.escuelajs.co/api/v1/products',
       );
-      final getProductsModel = ProductsListModel.fromJson(response.data);
+      final getProductsModel = ProductsListModel.fromJson(response);
       products = getProductsModel.productsList
           .map((e) => ProductsModel.fromJson(e))
           .toList();

@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_ninja/core/api/dio_consumer.dart';
+import 'package:food_ninja/core/cache/cache_helper.dart';
 import 'package:food_ninja/core/style/theme_manager.dart';
 import 'package:food_ninja/modelView/chatCubit/chat_cubit.dart';
 import 'package:food_ninja/modelView/orderCubit/order_cubit.dart';
@@ -31,12 +33,18 @@ import 'package:food_ninja/view/screens/password_reset/verifyCodeScreen/verify_c
 import 'package:food_ninja/view/screens/splash_screen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  CacheHelper().init();
   runApp(
     MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => UserCubit()),
+        BlocProvider(
+            create: (context) =>
+                UserCubit(DioConsumer(dio: Dio()))..getUserData()),
         BlocProvider(create: (context) => SearchCubit()),
-        BlocProvider(create: (context) => ProductsCubit(Dio())..getItemsList()),
+        BlocProvider(
+            create: (context) =>
+                ProductsCubit(DioConsumer(dio: Dio()))..getItemsList()),
         BlocProvider(create: (context) => ResetPassCubit()),
         BlocProvider(create: (context) => ChatCubit()),
         BlocProvider(create: (context) => OrderCubit()),
@@ -54,7 +62,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeManager.getDarkTheme,
-      initialRoute: 'navigationBarScreen',
+      initialRoute: 'start',
       routes: {
         'start': (context) => const SplashScreen(),
         'onboarding1': (context) => const OnBoardingScreen1(),
