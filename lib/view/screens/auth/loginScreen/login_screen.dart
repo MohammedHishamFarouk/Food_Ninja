@@ -36,13 +36,13 @@ class LoginScreen extends StatelessWidget {
                       child: Column(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(top: 30.0),
+                            padding: const EdgeInsets.only(top: 25.0),
                             child: Image.asset('assets/Logo.png'),
                           ),
                           Text(
                             'FoodNinja',
                             style: TextStyle(
-                                fontSize: 40, color: ColorManager.blendedGreen),
+                                fontSize: 35, color: ColorManager.blendedGreen),
                           ),
                           const Text(
                             'Deliver Favourite Food',
@@ -58,12 +58,15 @@ class LoginScreen extends StatelessWidget {
                 const Text(
                   'Login To Your Account',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 17,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(24.0),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24.0,
+                    vertical: 15,
+                  ),
                   child: Column(
                     children: [
                       CustomTextFieldWidget(
@@ -77,16 +80,13 @@ class LoginScreen extends StatelessWidget {
                         formKey: context.read<UserCubit>().signInPasswordKey,
                         controller: context.read<UserCubit>().signInPassword,
                       ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      const Text(
-                        'Or Continue with',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 13),
-                      ),
-                      const SizedBox(
-                        height: 25,
+                      const Padding(
+                        padding: EdgeInsets.symmetric(vertical: 22.0),
+                        child: Text(
+                          'Or Continue with',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 13),
+                        ),
                       ),
                       const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,

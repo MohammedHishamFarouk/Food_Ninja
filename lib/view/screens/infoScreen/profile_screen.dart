@@ -55,9 +55,9 @@ class ProfileScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      'mohammed hisham',
-                      style: TextStyle(
+                    Text(
+                      context.read<UserCubit>().userData!.name,
+                      style: const TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
                       ),
@@ -74,11 +74,11 @@ class ProfileScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.only(top: 10.0, bottom: 20),
+              Padding(
+                padding: const EdgeInsets.only(top: 10.0, bottom: 20),
                 child: Text(
-                  'mohamedhis36@gmail.com',
-                  style: TextStyle(color: Colors.grey, fontSize: 16),
+                  context.read<UserCubit>().userData!.email,
+                  style: const TextStyle(color: Colors.grey, fontSize: 16),
                 ),
               ),
               FilledButton(

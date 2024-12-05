@@ -18,7 +18,9 @@ class SignupScreen extends StatelessWidget {
     return BlocConsumer<UserCubit, UserState>(
       listener: (context, state) {
         if (state is SignUpSuccess) {
+          context.read<UserCubit>().login();
           Navigator.of(context).pushNamed('fillBio');
+          context.read<UserCubit>().getUserData();
         } else if (state is SignUpFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(

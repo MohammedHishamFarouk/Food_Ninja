@@ -1,12 +1,10 @@
-import 'package:food_ninja/model/local_data.dart';
-
 class EndPoints {
   static String baseUrl = 'https://api.escuelajs.co/api/v1/';
   static String signIn = 'auth/login';
   static String signUP = 'users/';
   static String getUser = 'auth/profile';
   static String getItems = 'products';
-  static String updateProfile = 'users/${LocalData.userDataModel!.id}';
+  static String updateProfile = 'users/';
 }
 
 class ApiKey {

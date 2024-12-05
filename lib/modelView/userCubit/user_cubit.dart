@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:food_ninja/core/api/api_consumer.dart';
@@ -73,14 +75,17 @@ class UserCubit extends Cubit<UserState> {
     }
   }
 
-  Future<void> login() async {
-    emit(LoginLoading());
+  Future login() async {
     try {
-      final loginResponse = await api.post(EndPoints.signIn, data: {
-        ApiKey.email: signInEmail.text,
-        ApiKey.password: signInPassword.text
+      emit(LoginLoading());
+      final response = await api.post(EndPoints.signIn, data: {
+        ApiKey.email:
+            signInEmail.text.isEmpty ? signUpEmail.text : signInEmail.text,
+        ApiKey.password: signInPassword.text.isEmpty
+            ? signUpPassword.text
+            : signInPassword.text
       });
-      final user = LoginModel.fromJson(loginResponse);
+      final user = LoginModel.fromJson(response);
       CacheHelper().saveData(key: ApiKey.accessToken, value: user.accessToken);
       emit(LoginSuccess());
     } catch (e) {
@@ -89,8 +94,8 @@ class UserCubit extends Cubit<UserState> {
   }
 
   void getUserData() async {
-    emit(LoginLoading());
     try {
+      emit(LoginLoading());
       final response = await api.get(
         EndPoints.getUser,
       );
@@ -100,13 +105,23 @@ class UserCubit extends Cubit<UserState> {
       emit(LoginFailure(message: e.toString()));
     }
   }
+  //mohis@gmail.com
 
-  void updateUserInfo(String updateType, String update) async {
-    emit(UpdateInfoLoading());
+  //String updateType, String update
+
+  void updateUserName() async {
+    if (firstName.text.isEmpty ||
+        lastName.text.isEmpty ||
+        mobileNumber.text.isEmpty) {
+      emit(UpdateInfoFailed(message: 'please fill in the required fields'));
+      return;
+    }
+    log('${userData!.id}');
     try {
+      emit(UpdateInfoLoading());
       await api.put(
-        EndPoints.updateProfile,
-        data: {updateType: update},
+        '${EndPoints.updateProfile}${userData!.id}',
+        data: {ApiKey.name: '${firstName.text} ${lastName.text}'},
       );
       emit(UpdateInfoSuccess());
     } catch (e) {
