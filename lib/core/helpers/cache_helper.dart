@@ -1,11 +1,11 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CacheHelper {
-  static late SharedPreferences sharedPreferences;
+  static late final SharedPreferences sharedPreferences;
 
   //here we initialize the cache
-  Future<void> init() async {
-    sharedPreferences = await SharedPreferences.getInstance();
+  Future<SharedPreferences> init() async {
+    return sharedPreferences = await SharedPreferences.getInstance();
   }
 
   // this method is used to put data inside the local database using a key

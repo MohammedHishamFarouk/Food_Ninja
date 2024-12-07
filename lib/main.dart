@@ -32,9 +32,9 @@ import 'package:food_ninja/view/screens/password_reset/reset_success_screen.dart
 import 'package:food_ninja/view/screens/password_reset/verifyCodeScreen/verify_code_screen.dart';
 import 'package:food_ninja/view/screens/splash_screen.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  CacheHelper().init();
+  await CacheHelper().init();
   runApp(
     MultiBlocProvider(
       providers: [

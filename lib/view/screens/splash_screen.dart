@@ -22,13 +22,17 @@ class _SplashScreenState extends State<SplashScreen> {
         }
       },
       builder: (context, state) {
-        return Scaffold(
+        return const Scaffold(
           body: Stack(
             alignment: Alignment.topCenter,
             children: [
-              const BackGroundPatternWidget(),
+              BackGroundPatternWidget(),
               Center(
-                child: Image.asset('assets/Logo1.png'),
+                child: Center(
+                  child: Image(
+                    image: AssetImage('assets/Logo1.png'),
+                  ),
+                ),
               )
             ],
           ),
