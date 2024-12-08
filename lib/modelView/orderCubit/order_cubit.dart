@@ -37,16 +37,7 @@ class OrderCubit extends Cubit<OrderState> {
     )
   ];
 
-  final Set<Widget> cartProducts = {
-    const ProductButton(
-      image: AssetFolder.soup,
-      productName: 'soup',
-      hintText: 'asjkfasjfm',
-      price: 27,
-      description: 'mkasfnajkfnaf',
-      id: 100000,
-    )
-  };
+  final Set<Widget> cartProducts = {};
   String defaultPaymentMethod = AssetFolder.paypal;
   double defaultImageScale = 1.5;
 

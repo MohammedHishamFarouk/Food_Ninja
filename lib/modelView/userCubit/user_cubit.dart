@@ -14,8 +14,6 @@ part 'user_state.dart';
 class UserCubit extends Cubit<UserState> {
   UserCubit(this.api) : super(UserInitial());
 
-  final ApiConsumer api;
-
   GlobalKey<FormState> signUpAnamwpKey = GlobalKey();
 
   TextEditingController signUpAnamwp = TextEditingController();
@@ -49,6 +47,8 @@ class UserCubit extends Cubit<UserState> {
   TextEditingController mobileNumber = TextEditingController();
 
   XFile? profileImage;
+
+  final ApiConsumer api;
 
   bool keepMeSigned = false;
   bool emailSpecialPricing = false;
